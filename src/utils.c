@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 22:03:43 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/15 04:06:40 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/05/21 23:56:10 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,24 @@ unsigned long	ft_time()
 
 void	ft_eating(t_philo *philo)
 {
-	long	end_time;
-	long	start_time;
-
 	pthread_mutex_lock(philo->eat_time);
-	start_time = philo->time;
+	philo->time = ft_time();
 	pthread_mutex_unlock(philo->eat_time);
 	pthread_mutex_lock(philo->print_mutex);
-	printf("\n\035[1;32m%ld %lu is eating\035[0m\n", philo->time, (unsigned long)philo->thread_id[philo->thread_index]);
-	pthread_mutex_lock(philo->eat_time);
-	end_time = ft_time();
-	philo->time += end_time - start_time; // update the current time for the next philo
-	pthread_mutex_unlock(philo->eat_time);
+	printf("%ld %d is eating\n", philo->time - philo->start_time, philo->philo_id);
+	pthread_mutex_unlock(philo->print_mutex);
+	usleep(philo->time_to_eat * 1000);
 }
+
+// void	ft_free(t_philo **arr)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	while (arr[++i])
+// 		free(arr[i]);
+// 	free(arr);
+// }
 
 int	ft_atoi(const char *str)
 {
