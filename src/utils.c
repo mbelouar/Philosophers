@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 22:03:43 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/21 23:56:10 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/05/22 01:42:26 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ void	ft_eating(t_philo *philo)
 	pthread_mutex_unlock(philo->print_mutex);
 	usleep(philo->time_to_eat * 1000);
 }
-
-// void	ft_free(t_philo **arr)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (arr[++i])
-// 		free(arr[i]);
-// 	free(arr);
-// }
 
 int	ft_atoi(const char *str)
 {

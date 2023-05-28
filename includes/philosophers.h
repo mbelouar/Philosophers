@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:53:47 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/21 23:56:14 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/05/22 01:42:29 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				check_args_and_stock(t_philo *philo, int ac, char **av);
 int				ft_atoi(const char *str);
 unsigned long	ft_time();
 int				init_mutex(t_philo *philo);
-// void			ft_free(char **arr);
+void			*routine(void	*arg);
 int				create_threads(t_philo *philo);
 void			ft_eating(t_philo *philo);
 
