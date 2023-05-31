@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 01:22:02 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/22 01:28:41 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:44:32 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	create_threads(t_philo *philo)
 		if (!all_philos)
 			return (1);
 		all_philos[i]->philo_id = i + 1;
+		all_philos[i]->die = 0;
 		all_philos[i]->nb_philo = philo->nb_philo;
 		all_philos[i]->nb_meals = philo->nb_meals;
 		all_philos[i]->start_time = ft_time();
@@ -75,6 +76,25 @@ int	create_threads(t_philo *philo)
 		if (pthread_create(&philo->thread_id[i], NULL, routine, all_philos[i]) != 0)
 			return (free (all_philos), free (philo->thread_id), 1);
 	}
-	while (1);
+	while (1)
+	{
+		i = -1;
+		while (++i < philo->nb_philo)
+		{
+			pthread_mutex_lock(all_philos[i]->eat_time);
+			if (ft_time() - all_philos[i]->time >= philo->time_to_die)
+			{
+				philo->die = 1;
+				ft_print(philo, "is died");
+				pthread_mutex_unlock(all_philos[i]->eat_time);
+				i = -1;
+				while (++i < philo->nb_philo)
+					pthread_join(all_philos[i]->thread_id[i], NULL);
+				return (0);
+			}
+			usleep(200);
+			pthread_mutex_unlock(all_philos[i]->eat_time);
+		}
+	}
 	return (0);
 }

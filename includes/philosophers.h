@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:53:47 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/22 01:42:29 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:22:23 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 typedef struct s_philo {
 	int				philo_id;
+	int				die;
 	int				nb_philo;
 	int				nb_meals;
-	int				time_to_die;
+	unsigned long	time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				thread_index;
-	long			start_time;
-	long			time;
+	unsigned long	start_time;
+	unsigned long	time;
 	pthread_t		*thread_id;
 	pthread_mutex_t **forks;
 	pthread_mutex_t	*left_chopstick;
@@ -45,5 +45,7 @@ int				init_mutex(t_philo *philo);
 void			*routine(void	*arg);
 int				create_threads(t_philo *philo);
 void			ft_eating(t_philo *philo);
+int				ft_strcmp(char *s1, char *s2);
+int			ft_print(t_philo *philo, char *act);
 
 #endif

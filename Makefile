@@ -6,7 +6,7 @@
 #    By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 18:51:38 by mbelouar          #+#    #+#              #
-#    Updated: 2023/05/13 23:36:06 by mbelouar         ###   ########.fr        #
+#    Updated: 2023/05/30 19:13:52 by mbelouar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,12 @@
 RED = \033[0;31m
 GREEN = \033[0;32m
 RESET = \033[0m
+YELLOW = \033[0;33m
 
 SRC = 	src/main.c \
 		src/utils.c \
+		src/routine.c \
+		src/init_create.c \
 
 NAME = philo
 CC = cc
@@ -27,9 +30,12 @@ OBJS := $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(RED)Compiling philosophers...$(RESET)"
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 	@echo "$(GREEN)Compilation complete$(RESET)"
+
+$(OBJS): %.o: %.c
+	@echo "$(YELLOW)Compiling $< $(RESET)"
+	@$(CC) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)
