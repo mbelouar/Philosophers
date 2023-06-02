@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:53:47 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/31 15:22:23 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:11:23 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ typedef struct s_philo {
 	int				die;
 	int				nb_philo;
 	int				nb_meals;
-	unsigned long	time_to_die;
+	long			time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	unsigned long	start_time;
-	unsigned long	time;
+	int				meal;
+	long			start_time;
+	long			time;
 	pthread_t		*thread_id;
 	pthread_mutex_t **forks;
 	pthread_mutex_t	*left_chopstick;
@@ -38,14 +39,15 @@ typedef struct s_philo {
 }	t_philo;
 
 
+void			ft_usleep(long start, int time_to_sleep);
 int				check_args_and_stock(t_philo *philo, int ac, char **av);
 int				ft_atoi(const char *str);
-unsigned long	ft_time();
+long			ft_time();
 int				init_mutex(t_philo *philo);
 void			*routine(void	*arg);
 int				create_threads(t_philo *philo);
 void			ft_eating(t_philo *philo);
 int				ft_strcmp(char *s1, char *s2);
-int			ft_print(t_philo *philo, char *act);
+int				ft_print(t_philo *philo, char *act);
 
 #endif

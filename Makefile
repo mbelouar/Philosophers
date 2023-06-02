@@ -6,7 +6,7 @@
 #    By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 18:51:38 by mbelouar          #+#    #+#              #
-#    Updated: 2023/05/30 19:13:52 by mbelouar         ###   ########.fr        #
+#    Updated: 2023/06/01 23:46:19 by mbelouar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = 	src/main.c \
 
 NAME = philo
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 OBJS := $(SRC:.c=.o)
 

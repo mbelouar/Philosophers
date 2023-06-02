@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 01:22:02 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/05/31 15:44:32 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:34:37 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_mutex(t_philo *philo)
 		pthread_mutex_destroy(philo->print_mutex);
 		return (free (philo->print_mutex), free (philo->eat_time), 1);
 	}
-	philo->forks = malloc(sizeof(pthread_mutex_t *));
+	philo->forks = malloc(sizeof(pthread_mutex_t *) * philo->nb_philo);
 	if (!philo->forks)
 		return (1);
 	i = -1;
@@ -48,6 +48,10 @@ int	create_threads(t_philo *philo)
 {
 	t_philo	**all_philos;
 	int		i;
+	// pthread_mutex_t *lock;
+
+	// lock = malloc(sizeof(pthread_mutex_t));
+	// pthread_mutex_init(lock, NULL);
 
 	all_philos = malloc(sizeof(t_philo *) * philo->nb_meals);
 	philo->thread_id = malloc(sizeof(pthread_t) * philo->nb_philo);
@@ -64,8 +68,8 @@ int	create_threads(t_philo *philo)
 		all_philos[i]->philo_id = i + 1;
 		all_philos[i]->die = 0;
 		all_philos[i]->nb_philo = philo->nb_philo;
-		all_philos[i]->nb_meals = philo->nb_meals;
 		all_philos[i]->start_time = ft_time();
+		all_philos[i]->meal = 0;
 		all_philos[i]->time = ft_time();
 		all_philos[i]->time_to_eat = philo->time_to_eat;
 		all_philos[i]->time_to_sleep = philo->time_to_sleep;
@@ -79,21 +83,28 @@ int	create_threads(t_philo *philo)
 	while (1)
 	{
 		i = -1;
+		pthread_mutex_lock(philo->eat_time);
 		while (++i < philo->nb_philo)
 		{
-			pthread_mutex_lock(all_philos[i]->eat_time);
 			if (ft_time() - all_philos[i]->time >= philo->time_to_die)
 			{
-				philo->die = 1;
-				ft_print(philo, "is died");
-				pthread_mutex_unlock(all_philos[i]->eat_time);
+				all_philos[i]->die = 1;
+				printf("%ld %d is died\n", ft_time() - all_philos[i]->start_time, all_philos[i]->philo_id);
 				i = -1;
 				while (++i < philo->nb_philo)
-					pthread_join(all_philos[i]->thread_id[i], NULL);
+					pthread_detach(philo->thread_id[i]);
+				return (0);
+			}
+			if (all_philos[i]->meal >= philo->nb_philo * philo->nb_meals && philo->nb_meals)
+			{
+				pthread_mutex_unlock(philo->eat_time);
+						i = -1;
+				while (++i < philo->nb_philo)
+					pthread_detach(philo->thread_id[i]);
 				return (0);
 			}
 			usleep(200);
-			pthread_mutex_unlock(all_philos[i]->eat_time);
+			pthread_mutex_unlock(philo->eat_time);
 		}
 	}
 	return (0);
