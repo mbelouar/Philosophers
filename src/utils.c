@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 22:03:43 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/06/02 01:10:13 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/06/04 01:11:52 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ void	ft_eating(t_philo *philo)
 
 int	ft_print(t_philo *philo, char *act)
 {
-	pthread_mutex_lock(philo->eat_time);
-	if (philo->die == 1)
-	{
-		pthread_mutex_unlock(philo->eat_time);
-		return (1);
-	}
+	// pthread_mutex_lock(philo->die_m);
+	// int die_value = philo->die;
+    // pthread_mutex_unlock(philo->die_m);
+	pthread_mutex_lock(philo->print_mutex);
 	printf("%ld %d %s\n", ft_time() - philo->start_time, philo->philo_id, act);
-	pthread_mutex_unlock(philo->eat_time);
+	// printf("die value ================>  %d\n", philo->die);
+	pthread_mutex_unlock(philo->print_mutex);
 	return (0);
 }
 
