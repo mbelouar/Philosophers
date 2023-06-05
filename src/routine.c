@@ -6,7 +6,7 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 01:23:13 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/06/03 23:45:35 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/06/04 23:12:29 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*routine(void	*arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	if (philo->philo_id % 2 == 0)

@@ -6,16 +6,16 @@
 /*   By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 22:03:43 by mbelouar          #+#    #+#             */
-/*   Updated: 2023/06/04 01:11:52 by mbelouar         ###   ########.fr       */
+/*   Updated: 2023/06/05 00:32:01 by mbelouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-long	ft_time()
+long	ft_time(void)
 {
 	struct timeval	tv;
-	long	time_in_ms;
+	long			time_in_ms;
 
 	gettimeofday(&tv, NULL);
 	time_in_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
@@ -28,13 +28,13 @@ void	ft_usleep(long start, int time_to_sleep)
 	{
 		if (ft_time() - start >= time_to_sleep)
 			break ;
-		usleep(200);
+		usleep(500);
 	}
 }
 
 void	ft_eating(t_philo *philo)
 {
-	static int count;
+	static int	count;
 
 	pthread_mutex_lock(philo->eat_time);
 	philo->time = ft_time();
@@ -49,12 +49,8 @@ void	ft_eating(t_philo *philo)
 
 int	ft_print(t_philo *philo, char *act)
 {
-	// pthread_mutex_lock(philo->die_m);
-	// int die_value = philo->die;
-    // pthread_mutex_unlock(philo->die_m);
 	pthread_mutex_lock(philo->print_mutex);
 	printf("%ld %d %s\n", ft_time() - philo->start_time, philo->philo_id, act);
-	// printf("die value ================>  %d\n", philo->die);
 	pthread_mutex_unlock(philo->print_mutex);
 	return (0);
 }

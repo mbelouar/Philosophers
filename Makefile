@@ -6,7 +6,7 @@
 #    By: mbelouar <mbelouar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 18:51:38 by mbelouar          #+#    #+#              #
-#    Updated: 2023/06/03 23:51:33 by mbelouar         ###   ########.fr        #
+#    Updated: 2023/06/05 00:00:31 by mbelouar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ YELLOW = \033[0;33m
 SRC = 	src/main.c \
 		src/utils.c \
 		src/routine.c \
-		src/init_create.c \
+		src/init_and_create.c \
 
 NAME = philo
 CC = cc
