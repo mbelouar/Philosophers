@@ -26,7 +26,7 @@ philosopher takes their right and their left forks to eat, one in each hand.***
 start sleeping. Once awake, they start thinking again. The simulation stops when
 a philosopher dies of starvation.*** 
 >
-> ***Every philosopher needs to eat and should never starve.*** 
+> *** * Every philosopher needs to eat and should never starve.*** 
 > 
 > ***Philosophers don’t speak with each other.***
 > 
