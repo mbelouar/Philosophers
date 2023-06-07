@@ -35,10 +35,10 @@ a philosopher dies of starvation.***
 > ***No need to say that philosophers should avoid dying!***
 
 # Global rules:
-* You have to write a program for the mandatory part and another one for the bonus part
-(if you decide to do the bonus part). They both have to comply with the following rules:
+` You have to write a program for the mandatory part and another one for the bonus part
+(if you decide to do the bonus part). They both have to comply with the following rules:`
 
-`Global variables are forbidden!`
+* Global variables are forbidden!
 
 * Your(s) program(s) should take the following arguments:
 
