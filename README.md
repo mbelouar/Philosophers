@@ -1,1 +1,1 @@
-![alt text for screen readers](https://media.geeksforgeeks.org/wp-content/uploads/dining_philosopher_problem.png "Sorting algrithm in C")
+![alt text for screen readers](https://pages.mtu.edu/~shene/NSF-3/e-Book/MUTEX/DIAGRAM-philosopher-lefty-has-1.jpg "Sorting algrithm in C")
