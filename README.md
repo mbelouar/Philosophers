@@ -76,3 +76,5 @@ pher number N + 1.
 ◦ timestamp_in_ms X is thinking
 ◦ timestamp_in_ms X died
 ```
+> ***Replace timestamp_in_ms with the current timestamp in milliseconds
+and X with the philosopher number.***
