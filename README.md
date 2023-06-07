@@ -78,3 +78,8 @@ pher number N + 1.
 ```
 > ***Replace timestamp_in_ms with the current timestamp in milliseconds
 and X with the philosopher number.***
+
+* A displayed state message should not be mixed up with another message.
+* A message announcing a philosopher died should be displayed no more than 10 ms
+after the actual death of the philosopher.
+* Again, philosophers should avoid dying!
