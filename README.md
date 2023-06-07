@@ -1,1 +1,1 @@
-![alt text for screen readers](https://pages.mtu.edu/~shene/NSF-3/e-Book/MUTEX/DIAGRAM-philosopher-lefty-has-1.jpg "Sorting algrithm in C")
+![alt text for screen readers](https://www.interviewbit.com/blog/wp-content/uploads/2021/10/Banner-Dining-Philosophers-Problem.png "Sorting algrithm in C")
