@@ -26,10 +26,14 @@ philosopher takes their right and their left forks to eat, one in each hand.***
 start sleeping. Once awake, they start thinking again. The simulation stops when
 a philosopher dies of starvation.*** 
 >
-> *** * Every philosopher needs to eat and should never starve.*** 
+> ***Every philosopher needs to eat and should never starve.*** 
 > 
 > ***Philosophers don’t speak with each other.***
 > 
 > ***Philosophers don’t know if another philosopher is about to die.***
 > 
 > ***No need to say that philosophers should avoid dying!***
+
+# Global rules:
+* You have to write a program for the mandatory part and another one for the bonus part
+(if you decide to do the bonus part). They both have to comply with the following rules:
